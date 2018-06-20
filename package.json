@@ -1,13 +1,12 @@
 {
     "name": "vscode-gemfile",
     "displayName": "vscode-gemfile",
-    "description": "",
+    "description": "provide hover link in Gemfile refers to online site",
     "version": "0.0.1",
     "publisher": "周鹏",
     "engines": {
         "vscode": "^1.23.0"
     },
-    "enableProposedApi": true,
     "categories": [
         "Other"
     ],
@@ -15,20 +14,6 @@
         "workspaceContains:Gemfile.lock"
     ],
     "main": "./out/src/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "Gemfile:Document",
-                "title": "Gem Document"
-            }
-        ],
-        "keybindings": [
-            {
-                "command": "Gemfile:Document",
-                "key": "Alt+F1"
-            }
-        ]
-    },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
         "compile": "tsc -watch -p ./",
@@ -42,9 +27,7 @@
         "@types/mocha": "^2.2.32"
     },
     "dependencies": {
-        "gemfile": "^1.0.0",
-        "he": "^1.1.1",
-        "request-promise-native": "^1.0.5",
-        "sanitize-html": "^1.18.2"
+        "vscode": "^1.1.18",
+        "gemfile": "^1.0.0"
     }
 }
