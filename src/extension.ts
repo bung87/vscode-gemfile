@@ -14,11 +14,29 @@ class GemfileProvider implements vscode.HoverProvider {
       position,
       /([A-Za-z\/0-9_-]+)(\.[A-Za-z0-9]+)*/
     );
+    console.log(`gemRange${gemRange.start.line}:${gemRange.end.line}`);
     let gem = document.getText(gemRange);
-    if (!gem || ["require", "true", "false"].indexOf(gem) !== -1) {
+    let lineText = document.lineAt(position.line).text.trim();
+    if (
+      lineText.startsWith("//") ||
+      lineText.startsWith("#") ||
+      lineText.startsWith("source")
+    ) {
       return;
     }
-    console.log(`gem${gem}`);
+    if (!gem || [
+      "require",
+      "true",
+      "false",
+      "group",
+      "development",
+      "test",
+      "production",
+      "do",
+      "gem"
+    ].indexOf(gem) !== -1) {
+      return;
+    }
     if (/^[^a-zA-Z]+$/.test(gem)) {
       console.log("no alphabet");
       return;
@@ -30,7 +48,6 @@ class GemfileProvider implements vscode.HoverProvider {
       let version = specs[gem].version;
       endpoint = `${gem}/${version}`;
     } else {
-      let lineText = document.lineAt(position.line).text.trim();
       let src = lineText
         .split(",")[1]
         .replace(/["\s]/g, "")
@@ -38,10 +55,7 @@ class GemfileProvider implements vscode.HoverProvider {
       let url = `https://${src}`;
       str = `View [${url}](${url})`;
     }
-    console.log(gem, endpoint);
-    if (!endpoint) {
-      // str =
-    } else {
+    if (endpoint) {
       str = `View online document of [${endpoint}](https://www.rubydoc.info/gems/${endpoint})`;
     }
     let doc = new vscode.MarkdownString(str);

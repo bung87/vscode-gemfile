@@ -3,13 +3,21 @@
     "displayName": "vscode-gemfile",
     "description": "provide hover link in Gemfile refers to online site",
     "version": "0.0.1",
-    "publisher": "周鹏",
+    "publisher": "bung87",
     "engines": {
         "vscode": "^1.23.0"
     },
+    "repository": {
+        "url": "https://github.com/bung87/vscode-gemfile"
+    },
+    "icon": "Gemfile.png",
     "categories": [
         "Other"
     ],
+    "galleryBanner": {
+        "color": "#c52f24",
+        "theme": "dark"
+    },
     "activationEvents": [
         "workspaceContains:Gemfile.lock"
     ],

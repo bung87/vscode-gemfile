@@ -1,6 +1,8 @@
-# vscode-gemfile README
+# vscode-gemfile
 
-provide hover link in Gemfile refers to online site.
+provide hover link in Gemfile refers to online site.  
+
+![preview](preview.jpg)  
 
 ## Release Notes
 
