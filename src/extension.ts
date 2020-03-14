@@ -66,7 +66,7 @@ class GemfileProvider implements vscode.HoverProvider {
 
 export function activate(context: vscode.ExtensionContext) {
   const GemFile: vscode.DocumentFilter = {
-    language: "ruby",
+    // language: "ruby", may not identical as ruby file so commented this
     pattern: "**/Gemfile",
     scheme: "file"
   };
@@ -80,7 +80,6 @@ export function activate(context: vscode.ExtensionContext) {
       return Promise.all(uris.map(uri => gemfile.parse(uri.fsPath)));
     })
     .then(infos => {
-      console.log(infos);
       for (let i in mine_uris) {
         cache.set(mine_uris[i], infos[i].GEM.specs);
       }
