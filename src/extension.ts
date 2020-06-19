@@ -56,7 +56,7 @@ class GemfileProvider implements vscode.HoverProvider {
       str = `View [${url}](${url})`;
     }
     if (endpoint) {
-      str = `View online document of [${endpoint}](https://www.rubydoc.info/gems/${endpoint})`;
+      str = `View online docs for [${endpoint}](https://www.rubydoc.info/gems/${endpoint})`;
     }
     let doc = new vscode.MarkdownString(str);
     let link = new vscode.Hover(doc, gemRange);
